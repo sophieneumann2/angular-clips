@@ -7,6 +7,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  showAlert = false;
+  alertMsg = 'Please wait. Your account is being created.';
+  alertColor = 'blue';
+
   /* values are defined here and not inside new FormGroup to avoid that they are typed AbstractControl. */
   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -34,4 +38,10 @@ export class RegisterComponent {
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    this.showAlert = true;
+    this.alertMsg = 'Please wait. Your account is being created.';
+    this.alertColor = 'blue';
+  }
 }
